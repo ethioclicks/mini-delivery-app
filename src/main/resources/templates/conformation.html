@@ -1,0 +1,98 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+          rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+          crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<!--/*@thymesVar id="orders" type="com.samrit.deliveryapp.model.Order"*/-->
+<body th:object="${orders}">
+
+<nav class="navbar navbar-expand-lg fixed-top navbar-dark  bg-dark "  >
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#"> Home Delivery</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+
+                    <a th:object="${orders}" class="nav-link active" aria-current="page" href="#" th:href="@{/dashboard/__${orders.getUser().id}__}">Home</a>
+                </li>
+<!--                <li class="nav-item">-->
+<!--                    <a th:href= "@{/registration}" class="nav-link" href="#">SignUp</a>-->
+<!--                </li>-->
+                <li class="nav-item">
+                    <a th:href="@{/login}" class="nav-link "  href="#">Logout</a>
+                </li>
+                <!--                <li class="nav-item">-->
+                <!--                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">L</a>-->
+                <!--                </li>-->
+            </ul>
+        </div>
+    </div>
+</nav>
+<div style="margin-top: 50px" class="container" >
+
+<h2>Order Conformation </h2>
+
+    <form  style="width: 50%" th:object="${orders}"  th:action="@{/conformation/__${orders.id}__} " method="post">
+<div>
+
+    <div th:object=" ${orders}" class="shadow p-3 mb-3 bg-white rounded">
+        <h4>Item Information</h4>
+        <label bold style="font-size: 12px" >Order Id: </label>
+        <label style="font-size: 12px"  th:text="${orders.id}" > </label></br>
+        <label style="font-size: 12px">Date:</label>
+        <label style="font-size: 12px" th:text="${orders.date}" > </label><br>
+        <label style="font-size: 12px">Ite Name: </label>
+        <label style="font-size: 12px" th:text="${orders.itemName}" > </label><br>
+        <label style="font-size: 12px">Category: </label>
+        <label style="font-size: 12px"  th:text="${orders.getCategories().description}" > </label><br>
+        <label style="font-size: 12px"> UOM: </label>
+        <label style="font-size: 12px"   th:text="${orders.getUnitOfMeasurement().description}"> </label><br>
+        <label style="font-size: 12px">Quantity: </label>
+        <label style="font-size: 12px"  th:text="${orders.size}"> </label><br>
+
+
+</div>
+    <div style="margin-top: 2px" class="shadow p-3 mb-3 bg-white rounded">
+    <h4>Pickup Information</h4>
+    <label style="font-size: 12px"  >Address: </label>
+    <label style="font-size: 12px"  th:text="${orders.getPickup().address}" > </label></br>
+    <label style="font-size: 12px" >Date:</label>
+    <label style="font-size: 12px"  th:text="${orders.getPickup().date}" > </label><br>
+    <label style="font-size: 12px" > Pickup Representative Information: </label>
+    <label style="font-size: 12px"  th:text="${orders.getPickup().pickupRepresentative}" > </label><br>
+    <label style="font-size: 12px" >Direction: </label>
+    <label  style="font-size: 12px"  th:text="${orders.getPickup().direction}" > </label><br>
+
+
+</div>
+
+    <div class="shadow p-3 mb-3 bg-white rounded">
+        <h4>Destination Information</h4>
+        <label style="font-size: 12px"  >Address: </label>
+        <label style="font-size: 12px"  th:text="${orders.getDestination().address}" > </label></br>
+        <label style="font-size: 12px" >Date:</label>
+        <label style="font-size: 12px"  th:text="${orders.getDestination().date}" > </label><br>
+        <label style="font-size: 12px" >Destination Representative Information:</label>
+        <label style="font-size: 12px"  th:text="${orders.getDestination().destinationRepresentative}" > </label><br>
+        <label style="font-size: 12px" >Instruction: </label>
+        <label style="font-size: 12px"   th:text="${orders.getDestination().instruction}" > </label><br>
+
+    </div>
+
+</div>
+<button   class="btn btn-success" type="submit"> Conform </button>
+    </form>
+</div>
+</body>
+</html>
