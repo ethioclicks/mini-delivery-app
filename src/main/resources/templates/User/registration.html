@@ -40,10 +40,10 @@
 <!--- Create Html registration form--->
 <div class="container">
     <!--/*@thymesVar id="user" type="com.samrit.deliveryapp.model.User"*/-->
-    <h1 class="text-center mt-0">Registration</h1>
+
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
-
+            <h1 class="text-center mt-0">Registration</h1>
 
             <form th:action="@{/registration}" method="post" th:object="${user}" >
                 <div class="form-group">

@@ -44,7 +44,7 @@
 <div class="container">
     <div className="container">
         <h2 class="text-center mt-0">User Dashboard page</h2>
-        <h2 class="text-center mt-0" th:text="*{firstName + ' '+ lastName}"></h2>
+        <h2 class="text-center mt-0" > Welcome User</h2>
 
         <div class="row">
             <span> <a href="/" th:href=" @{'/order/'+${user.getId()}}">New Order</a> </span>

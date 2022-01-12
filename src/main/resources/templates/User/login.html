@@ -38,12 +38,12 @@
 <div class="container">
   <!--/*@thymesVar id="user" type="com.samrit.deliveryapp.model.User"*/-->
   <div></div>
-  <h1 class="text-center mt-0" >Login</h1>
+
 <!--  <div class="row">-->
     <div class="row gx-4 gx-lg-5">
       <div class="col-sm-6 text-left">
 
-
+        <h1 class="text-center mt-0" >Login</h1>
       <form  th:object="${user}"  th:action="@{/login}"  method="post">
         <!-- error message--->
 <!--        <div th:if="${param.error}">-->
